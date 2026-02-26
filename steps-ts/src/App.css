@@ -1,0 +1,85 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* *************** */
+
+.steps {
+  background-color: #93969c;
+  width: 40%;
+  border-radius: 1rem;
+
+}
+
+.stepNum {
+  /* padding  先上下 后左右 */
+  padding: 2rem 4rem;
+}
+
+.step {
+  background-color: #61dafb;
+  /* 下面三个组合 背景就是圆形了 */
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  /* 圆形里面的内容水平垂直居中 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.buttons {
+  padding: 2rem 4rem;
+}
+
+.button {
+  font-size: 18px;
+  border-radius: 20%;
+  border-color: blue;
+  background-color: blue;
+  padding: 0.5rem 1rem;
+  color: azure
+}
+
+.img {
+  width: 3rem;
+  height: 3rem;
+}
