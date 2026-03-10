@@ -1,0 +1,77 @@
+ .App-logo {
+   height: 40vmin;
+   pointer-events: none;
+ }
+
+ @media (prefers-reduced-motion: no-preference) {
+   .App-logo {
+     animation: App-logo-spin infinite 20s linear;
+   }
+ }
+
+ .App-header {
+   background-color: #282c34;
+   min-height: 100vh;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   font-size: calc(10px + 2vmin);
+   color: white;
+ }
+
+ .App-link {
+   color: #61dafb;
+ }
+
+ @keyframes App-logo-spin {
+   from {
+     transform: rotate(0deg);
+   }
+
+   to {
+     transform: rotate(360deg);
+   }
+ }
+
+
+ .headTitle {
+   background-color: rgb(236, 161, 22);
+   font-size: 60px;
+   margin: 0;
+   padding: 1rem;
+ }
+
+ .footerTitle {
+   background-color: rgb(67, 241, 134);
+   font-size: 20px;
+   margin-bottom: 0;
+   padding: 0.5rem;
+ }
+
+ .App {
+   text-align: center;
+   display: flex;
+   flex-direction: column;
+   min-height: 100vh;
+   /*100vh  至少占满整个视口高度 */
+
+ }
+
+ .inputItems {
+   background-color: rgb(241, 130, 20);
+   font-size: 20px;
+   padding: 3rem;
+
+ }
+
+
+ .showeditem {
+   margin: 1rem 0.2rem;
+
+ }
+
+ .cross {
+   margin: 1rem 1rem;
+
+ }

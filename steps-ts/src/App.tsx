@@ -15,6 +15,7 @@ function App() {
 
 function Steps() {
   const [step, setStep] = useState<number>(1)
+  // 没用到isopen
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   function handlePrevious() {
