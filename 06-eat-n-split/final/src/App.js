@@ -21,6 +21,7 @@ const initialFriends = [
   },
 ];
 
+// 有各种作用的button  但是样式类似,所以可以自定义一个button组件
 function Button({ children, onClick }) {
   return (
     <button className="button" onClick={onClick}>
@@ -32,6 +33,8 @@ function Button({ children, onClick }) {
 export default function App() {
   const [friends, setFriends] = useState(initialFriends);
   const [showAddFriend, setShowAddFriend] = useState(false);
+  // selectedFriend 控制选中和表单显示   当选中一个好友，表单自动出现；切换到另一个好友时自动更新
+  // 这个是做什么的?    如果被选中了, 就出现split bill的框 并且还能用这个来传递是谁在计算balance 
   const [selectedFriend, setSelectedFriend] = useState(null);
 
   function handleShowAddFriend() {
@@ -63,9 +66,11 @@ export default function App() {
 
   return (
     <div className="app">
+      {/* <!-- 第一列：朋友列表（34rem 宽） --> */}
       <div className="sidebar">
         <FriendsList
           friends={friends}
+          // 这里其实也是把app组件里的一个state全传入了
           selectedFriend={selectedFriend}
           onSelection={handleSelection}
         />
@@ -75,8 +80,11 @@ export default function App() {
         <Button onClick={handleShowAddFriend}>
           {showAddFriend ? "Close" : "Add friend"}
         </Button>
+
+
       </div>
 
+      {/* <!-- 第二列：分账表单（44rem 宽） --> */}
       {selectedFriend && (
         <FormSplitBill
           selectedFriend={selectedFriend}
@@ -84,6 +92,7 @@ export default function App() {
           key={selectedFriend.id}
         />
       )}
+
     </div>
   );
 }

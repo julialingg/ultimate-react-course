@@ -5,6 +5,19 @@
   --color-dark: #ff922b;
 }
 
+/* 
+*是通用重置规则，用来标准化所有 HTML 元素的默认样式：
+
+* — 通用选择器，选中页面上的所有元素
+margin: 0; — 移除所有元素的外边距（元素外部的空间）
+padding: 0; — 移除所有元素的内边距（元素内部的空间）
+box-sizing: border-box; — 改变盒模型计算方式，使元素的宽度和高度包括边框和内边距
+
+作用：
+浏览器对不同元素有默认的 margin 和 padding（比如 <body> 有 8px 的 margin，<h1> 和 <p> 也有各自的默认间距）。这个规则统一清除这些默认值，方便开发者从零开始控制布局。
+
+这是现代网页开发中的最佳实践，几乎所有项目都会用这个重置规则 */
+
 * {
   margin: 0;
   padding: 0;
@@ -12,6 +25,15 @@
 }
 
 html {
+  /* 百分号表示相对单位，这里 62.5% 是相对于浏览器默认的 font-size 计算的。
+具体计算：
+浏览器默认 font-size = 16px
+62.5% × 16px = 10px
+所以 font-size: 62.5% 实际上是把 html 的默认字体改成 10px。
+为什么这样做？   这是为了方便使用 rem 单位（相对于根元素 html 的字体大小）：
+✅ 容易心算：1rem = 10px，计算更直观
+✅ 相对单位：保持响应式设计的优势，用户改变浏览器默认字体大小时，整个网站会等比例缩放 */
+
   font-size: 62.5%;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
@@ -19,7 +41,10 @@ html {
 
 body {
   height: 100vh;
-  color: #495057;
+  /* color 文本的颜色 由于设置在 body 上，
+  页面内的所有文本元素都会默认继承这个颜色，除非被其他更具体的样式覆盖 */
+  color: #596571;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -27,10 +52,22 @@ body {
 
 .app {
   min-height: 66vh;
+  /* 设置左右两个(朋友列表和split form)的宽度 */
+  /* 在 Grid 布局中，有两个轴：主轴（纵轴）和横轴（行轴）
+align-items 作用在纵轴（上下方向）
+justify-items 作用在横轴（左右方向） */
+
   display: grid;
   grid-template-columns: 34rem 44rem;
-  column-gap: 4rem;
+  /* gap是两列间隔 */
+  column-gap: 5rem;
   align-items: start;
+  /* start	对齐到容器顶部 
+end	对齐到容器底部
+center	竖直居中
+stretch	项目拉伸填充整个容器高度（默认值）
+baseline	按文本基线对齐 */
+
 }
 
 .button {
@@ -41,6 +78,7 @@ body {
   border-radius: 7px;
   font-weight: bold;
   cursor: pointer;
+  /*  过渡动画属性，用来让 CSS 属性的变化过程变得平滑。 */
   transition: 0.3s;
 }
 
@@ -59,6 +97,9 @@ body {
 
 .sidebar li {
   display: grid;
+  /* auto 表示： 根据内容自动决定宽度 
+  fr = fraction（剩余空间的比例）   占据 剩余空间的一份*/
+
   grid-template-columns: 4.8rem 1fr auto;
   align-items: center;
   column-gap: 1.6rem;
@@ -76,10 +117,13 @@ body {
 .sidebar li img {
   border-radius: 50%;
   width: 100%;
+  /* 这个元素在 Grid 里占据 2 行高度（跨两行）。 */
   grid-row: span 2;
+  grid-column: 1;
 }
 
 .sidebar li h3 {
+  /* 把 .sidebar li 里的 h3 放到 Grid 的第 1 行、第 2 列。 */
   grid-row: 1;
   grid-column: 2;
 }
@@ -94,7 +138,7 @@ body {
   grid-column: 3;
 }
 
-.sidebar > .button {
+.sidebar>.button {
   float: right;
   margin-right: 1.2rem;
 }
@@ -119,9 +163,10 @@ form {
 
 .form-add-friend {
   grid-template-columns: 1fr 1.5fr;
-  margin-bottom: 1.6rem;
+  margin-bottom: 1.4rem;
   padding: 1.2rem;
 }
+
 .form-split-bill {
   grid-template-columns: 1fr 12rem;
   padding: 3.2rem 4rem;
