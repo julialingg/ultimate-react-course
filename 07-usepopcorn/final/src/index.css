@@ -41,8 +41,21 @@ body {
   border-radius: 0.9rem;
 }
 
+/* 更现代的写法:
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main {
+自动占据剩余空间
+  flex: 1;  
+} */
+
 .main {
   margin-top: 2.4rem;
+  /* 三个2.4来源:body的2个padding和main的margin-top; */
   height: calc(100vh - 7.2rem - 3 * 2.4rem);
   display: flex;
   gap: 2.4rem;
@@ -91,6 +104,7 @@ body {
 }
 
 .search {
+  /* grid布局里面,控制自己在水平方向的位置 */
   justify-self: center;
   border: none;
   padding: 1.1rem 1.6rem;
@@ -104,6 +118,12 @@ body {
   background-color: var(--color-primary-light);
 }
 
+.num-results {
+  /* grid布局里面,控制自己在水平方向的位置 */
+  justify-self: end;
+  font-size: 1.8rem;
+}
+
 .search::placeholder {
   color: var(--color-text-dark);
 }
@@ -114,10 +134,7 @@ body {
   transform: translateY(-2px);
 }
 
-.num-results {
-  justify-self: end;
-  font-size: 1.8rem;
-}
+
 
 .btn-toggle {
   position: absolute;

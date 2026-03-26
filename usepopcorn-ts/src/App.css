@@ -1,0 +1,95 @@
+ /* * {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+ } */
+
+ html {
+   font-size: 62.5%;
+ }
+
+
+ body {
+   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+
+   color: aliceblue;
+   background-color: #212529;
+
+   padding: 2.4rem;
+ }
+
+
+
+
+ body {
+   background-color: #212529;
+   color: aliceblue
+ }
+
+
+ .card {
+   width: 20%;
+   height: 50vh;
+   background-color: #2b3035;
+   margin-right: 1rem;
+   border-radius: 1rem;
+   padding: 0 0;
+ }
+
+ .card ul {
+   padding: 0 1rem;
+ }
+
+ .movie {
+   display: grid;
+   /* grid-template-columns: 20% 1fr;  这里的20%会导致图片占据了一部分，然后剩余的全是空白 视觉上就是图片和文字间距过大 */
+   /* 第二列也写auto  文字就左对齐了,自然紧贴图片 */
+   grid-template-columns: auto auto;
+
+   /* 可选：控制间距 */
+   gap: 0 1rem;
+   justify-content: start;
+   padding-bottom: 1rem;
+ }
+
+
+ .movie img {
+   width: 3rem;
+   /* 这个元素在 Grid 里占据 2 行高度（跨两行）  */
+   grid-row: span 2;
+   grid-column: 1;
+
+ }
+
+ .movieDetails {
+   display: grid;
+   grid-template-columns: auto auto;
+   gap: 2rem;
+ }
+
+ .movieDetails img {
+   width: 10rem;
+   /* 这个元素在 Grid 里占据 2 行高度（跨两行）  */
+   grid-row: span 2;
+   grid-column: 1;
+
+ }
+
+ /* 不需要每个元素都单独设置 */
+ /* .movieTitle {
+  grid-column: 2;
+  grid-row: 1;
+} */
+
+ /* .movieYear {
+  grid-column: 2;
+  grid-row: 2;
+} */
+
+
+ /* .watchedMovieTitle {
+  grid-column: 2;
+  grid-row: 1;
+
+} */
