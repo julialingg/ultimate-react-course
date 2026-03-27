@@ -1,0 +1,55 @@
+ body {
+   background-color: #212529;
+   color: aliceblue;
+   text-align: start;
+ }
+
+ .singleShowCard {
+   background-color: #2b3035;
+   padding: 1rem 3rem;
+   /* 给 .singleShowCard 一个固定宽度，同时禁止它在 flex 中被撑大或压缩： */
+
+   width: 420px;
+   min-width: 420px;
+   max-width: 420px;
+   /*  flex: 0 0 420px;  不放大、不缩小、基础宽度就是 420px。 */
+   flex: 0 0 420px;
+
+
+   /* box-sizing: border-box;
+  overflow: hidden; */
+   overflow-y: auto;
+   overflow-x: hidden;
+
+ }
+
+ .movies li {
+   display: grid;
+   grid-template-columns: auto 1fr;
+   /* 两列之间的间距gap */
+   gap: 1rem;
+
+
+
+ }
+
+ .movies li img {
+   width: 3rem;
+   grid-row: span 2;
+   grid-column: 1;
+
+
+ }
+
+ .watchedMovieInfo {
+   display: grid;
+   grid-template-columns: auto auto;
+   gap: 1rem;
+ }
+
+
+ .watchedMovieInfo img {
+   width: 10rem;
+   grid-row: span 2;
+   grid-column: 1;
+ }

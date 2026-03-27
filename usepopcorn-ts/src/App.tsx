@@ -203,9 +203,7 @@ function App() {
 
 interface MovieDetailsProps {
   selectedId: string;
-
   handleSetWatchedMovie: (movie: Movie) => void;
-
 
 }
 function MovieDetails({ selectedId, handleSetWatchedMovie }: MovieDetailsProps) {
