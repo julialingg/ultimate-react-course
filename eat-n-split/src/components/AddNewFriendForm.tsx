@@ -6,7 +6,6 @@ interface AddNewFriendFormProps {
 
 }
 
-
 export default function AddNewFriendForm({ onAddNewFriend }: AddNewFriendFormProps) {
   const [name, setName] = useState<string>("")
   const [image, setImage] = useState<string>("https://i.pravatar.cc/48?u=118836")
