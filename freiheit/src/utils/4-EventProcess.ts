@@ -12,43 +12,14 @@
 
 
 
-// TypeScript 类型通常大写。
 type event = {
   userId: string
   type: "LOGIN" | "PURCHASE" | "LOGOUT"
   timestamp: number
 }
 
-const events: event[] = [
-  { userId: "u1", type: "LOGIN", timestamp: 10 },
-  { userId: "u1", type: "PURCHASE", timestamp: 15 },
-  { userId: "u1", type: "LOGOUT", timestamp: 20 },
-
-  { userId: "u2", type: "LOGIN", timestamp: 5 },
-  { userId: "u2", type: "LOGOUT", timestamp: 25 },
-];
 
 
-function validateInput(event: event): boolean {
-  // !!event.timestamp 会把 timestamp: 0 判断成 false
-  // return !!event.userId && !!event.timestamp && (event.type === "LOGIN" || event.type === "LOGOUT" || event.type === "PURCHASE")
-  return !!event.userId && typeof event.timestamp === "number"
-    && Number.isFinite(event.timestamp)
-    && (event.type === "LOGIN" || event.type === "LOGOUT" || event.type === "PURCHASE")
-
-}
-
-// Adds a new event into the event list.
-function addEvent(events: event[], event: event): event[] {
-  if (!validateInput(event)) return events
-
-  // const newEvents = events.push(event)
-  const newEvents = [...events, event]
-  return newEvents
-
-}
-
-// Important Edge Case     Your implementation should handle:
 // unordered events
 // duplicate LOGIN events
 // LOGOUT without LOGIN
@@ -64,7 +35,7 @@ function getUserSessionTime(events: event[], userId: string): number {
   //     duplicate LOGIN
   //     LOGOUT without LOGIN
 
-  // sort是为了按时间排序    a.timestamp - b.timesta 是 JS/TS 里最常见的数字升序 
+  // sort是为了按时间排序    a.timestamp - b.timestamp   数字升序 
   const userEvents: event[] = events.filter(e => e.userId === userId).sort((a, b) => a.timestamp - b.timestamp);
 
   // 不能用次数相等来判断:
@@ -102,31 +73,14 @@ function getUserSessionTime(events: event[], userId: string): number {
 
   return totalTime;
 }
-// Returns the number of purchases for a user.
-function getPurchaseCount(events: event[], userId: string): number {
 
-  // const userEvents: event[] = events.filter(e => e.userId === userId)
-
-  // let count: number = 0
-  // for (const e of userEvents) {
-  //   if (e.type == "PURCHASE") {
-  //     count++
-  //   }
-
-  // }
-  // return count
-
-  // 更简单的方式：
-  return events.filter(
-    (e) => e.userId === userId && e.type === "PURCHASE"
-  ).length;
-
-}
 
 
 // Returns the top n users with the highest total session time.
 function getTopActiveUsers(events: event[], n: number): string[] {
   // const users: string[] = events.map(e => e.userId);
+
+  // 先拿到所有users
   // 一个 user 会出现很多次 event。  所以用set去重  否则后面排序的结果也可能被影响
   const users = Array.from(new Set(events.map(e => e.userId)));
 
@@ -139,7 +93,7 @@ function getTopActiveUsers(events: event[], n: number): string[] {
 
   for (const user of users) {
     const time = getUserSessionTime(events, user);
-    // TODO  record []如何赋值
+
     // activeTime.push({ [user]: time })
     activeTime.push({ userId: user, totalTime: time })
   }
@@ -153,3 +107,16 @@ function getTopActiveUsers(events: event[], n: number): string[] {
 
 }
 export default getTopActiveUsers
+
+const events: event[] = [
+  { userId: "u1", type: "LOGIN", timestamp: 0 },
+  { userId: "u1", type: "PURCHASE", timestamp: 5 },
+  { userId: "u1", type: "LOGOUT", timestamp: 10 },
+
+  { userId: "u2", type: "LOGIN", timestamp: 2 },
+  { userId: "u2", type: "LOGOUT", timestamp: 20 },
+];
+
+console.log(getUserSessionTime(events, "u1"));
+
+console.log(getTopActiveUsers(events, 2));
